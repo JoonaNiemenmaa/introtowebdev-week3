@@ -1,5 +1,7 @@
 const tbody = document.getElementById("table_body");
 
+var even = false;
+
 function add_data_row(municipality, population) {
     const trow = document.createElement("tr");
 
@@ -12,7 +14,10 @@ function add_data_row(municipality, population) {
     trow.appendChild(td_municipality);
     trow.appendChild(td_population);
 
+    trow.classList.add(even ? "even" : "odd");
+
     tbody.appendChild(trow);
+    even = !even;
 }
 
 const url =
@@ -28,6 +33,9 @@ json_promise
         console.log(data);
         const options = {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify(data),
         };
 
