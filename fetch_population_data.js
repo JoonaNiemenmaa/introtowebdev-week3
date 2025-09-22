@@ -5,7 +5,7 @@ var even = false;
 function add_data_row(municipality, population) {
     const trow = document.createElement("tr");
 
-    const td_municipality = document.createElement("tr");
+    const td_municipality = document.createElement("td");
     td_municipality.innerText = municipality;
 
     const td_population = document.createElement("td");
@@ -23,9 +23,7 @@ function add_data_row(municipality, population) {
 const url =
     "https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/vaerak/statfin_vaerak_pxt_11ra.px";
 
-const json_promise = fetch("fetch.json");
-
-json_promise
+fetch("fetch.json")
     .then((response) => {
         return response.json();
     })
